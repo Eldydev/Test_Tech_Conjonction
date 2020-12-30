@@ -6,7 +6,54 @@ class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            Email: '',
+            Password: '',
+            EmailAlert: '',
+            PasswordAlert: '',
+        }
 
+        this.Email = this.Email.bind(this);
+        this.Password = this.Password.bind(this);
+        this.login = this.login.bind(this);
+    }
+    Email(event) {
+        this.setState({ Email: event.target.value })
+    }
+    Password(event) {
+        this.setState({ Password: event.target.value })
+    }
+    login(e) {
+        e.preventDefault();
+        if (this.state.Email == '') {
+            this.setState({ EmailAlert: 'invalid E-mail' })//check email
+        }
+        if (this.state.Password == '') {
+            this.setState({ PasswordAlert: 'invalid Password' })//check password
+        }
+        if ((this.state.Email != '') && (this.state.Password != '')) {
+            console.log('register');
+            fetch('https://reqres.in/api/login', { //creating dummy user
+                method: 'post',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+
+                body: JSON.stringify({
+                    email: this.state.Email,
+                    password: this.state.Password
+                })
+
+            }).then((Response) => Response.json())
+                .then((result) => {
+                    console.log(result);
+                    if (!result.error) {
+                        setTimeout(() => this.props.history.push("/dashboard"), 500); //redirect to dashboard
+                    }
+                    else
+                        this.setState({ EmailAlert: 'non registered user' });
+
+                })
         }
 
     }
@@ -23,13 +70,15 @@ class Home extends Component {
                 </div>
                 <div class="loginbox">
                     <h2>Sign-in</h2>
-                    <p>E-mail</p>
-                    <input type="text" />
-                    <p>Password</p>
-                    <input type="text" />
-                    <p>keep me logged</p>
-                    <p><Link to="/forgotpassword">Forgot your password ?</Link></p>
-                    <Link to="/dashboard"><button>SIGN IN</button></Link>
+                    <form>
+                        <p>E-mail</p>
+                        <input type="text" onChange={this.Email} placeholder="Enter Email" />
+                        <p>{this.state.EmailAlert}</p>
+                        <p>Password</p>
+                        <input type="password" onChange={this.Password} placeholder="Enter Password" />
+                        <p>{this.state.PasswordAlert}</p>
+                        <button onClick={e => this.login(e)}>SIGN IN</button>
+                    </form>
                     <p>Need an account ? </p>
                     <Link to="/register">Sign up</Link>
 
