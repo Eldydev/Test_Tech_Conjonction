@@ -59,28 +59,41 @@ class Home extends Component {
     }
     render() {
         return (
-            <div class="container">
-                <div class="presbox">
-                    <h1>Dimtech</h1>
-                    <p>The power of the dimensional technologie</p>
-                    <h2>Hi,</h2>
-                    <h2>Welcome on Dimtech</h2>
-                    <p>Ob haec et huius modi multa, quae cernebantur in paucis, omnibus timeri sunt coepta. et ne tot malis dissimulatis paulatimque serpentibus acervi crescerent aerumnarum, nobilitatis decreto legati mittuntur</p>
-                    <button>LEARN MORE</button>
+            <div className="container">
+                <div className="presbox">
+                    <div className="SiteNameBox">
+                        <p className="SiteTitle"><b>Dim</b>tech</p>
+                        <p className="desc">The power of the dimensional technologie</p>
+                    </div>
+                    <div className="SiteHelloBox">
+                        <p>Hi, <br></br>Welcome on Dimtech.</p>
+                    </div>
+                    <div className="SitePresBox">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                             Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <button>LEARN MORE</button>
+                    </div>
+
                 </div>
-                <div class="loginbox">
+                <div className="loginbox">
                     <h2>Sign-in</h2>
                     <form>
-                        <p>E-mail</p>
+                        <p className="InputTitle">E-mail</p>
                         <input type="text" onChange={this.Email} placeholder="Enter Email" />
                         <p>{this.state.EmailAlert}</p>
-                        <p>Password</p>
+                        <p className="InputTitle">Password</p>
                         <input type="password" onChange={this.Password} placeholder="Enter Password" />
                         <p>{this.state.PasswordAlert}</p>
+                        <input type="checkbox" name="keep me logged" />
+                        <label>keep me logged</label>
+                        <Link className="linkpassword" to="/forgotpassword">forgot you password ?</Link><br></br>
                         <button onClick={e => this.login(e)}>SIGN IN</button>
                     </form>
-                    <p>Need an account ? </p>
-                    <Link to="/register">Sign up</Link>
+                    <p>Need an account ?<Link className="linkSignup" to="/register">Sign up</Link></p>
+
 
                 </div>
 

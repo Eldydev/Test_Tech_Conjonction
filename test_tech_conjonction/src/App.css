@@ -37,28 +37,88 @@
   }
 }
 
+html {
+  height: 100%;
+}
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
 div {
-  border: solid 2px black;
 }
 
 .container {
   display: flex;
   height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .presbox {
   width: 55%;
   height: 100%;
+  text-align: left;
+  padding-left: 5%;
+  min-height: 100vh;
+}
+
+.SiteNameBox {
+  margin-top: 5%;
+  margin-bottom: 30%;
+  width: 30%;
+}
+
+.SiteTitle {
+  font-size: 40px;
+}
+
+.desc {
+  font-size: 8px;
+}
+
+.SiteHelloBox {
+  font-size: 30px;
+  margin-bottom: 5%;
+}
+
+.SitePresBox {
+  font-size: 12px;
+  margin-right: 20%;
 }
 
 .loginbox {
-  height: 100%;
+  padding-top: 20%;
+  padding-left: 5%;
+  min-height: 100vh;
   width: 45%;
   color: white;
   background: linear-gradient(to right, indigo, mediumblue);
+  text-align: left;
+}
+
+h2 {
+  font-size: 40px;
+}
+
+.InputTitle {
+  font-size: 12px;
+}
+
+.linkSignup {
+  margin-left: 20px;
+  color: red;
+}
+
+.linkpassword {
+  margin-left: 40px;
+  color: white;
+  text-decoration: underline;
 }
 
 button {
+  margin-top: 20px;
   padding: 10px;
   width: 120px;
   border-radius: 30px;
