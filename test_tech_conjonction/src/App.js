@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import Home from './components/Home.js'
+import { Router, Route, Switch } from "react-router-dom";
+import history from "./utils/history";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      token: []
+    }
+  }
+
+  render() {
+
+    return (
+      <div className="App">
+        {/* Don't forget to include the history module */}
+        <Router history={history}>
+          <Switch>
+            <Route path="/" component={Home} />
+          </Switch>
+        </Router>
+      </div>
+    );
+  }
+
+
 }
 
 export default App;
