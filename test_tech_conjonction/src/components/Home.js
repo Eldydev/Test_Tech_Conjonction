@@ -29,8 +29,9 @@ class Home extends Component {
                     <input type="text" />
                     <p>keep me logged</p>
                     <p><Link to="/forgotpassword">Forgot your password ?</Link></p>
-                    <button>SIGN IN</button>
-                    <p>Need an account ? sign up</p>
+                    <Link to="/dashboard"><button>SIGN IN</button></Link>
+                    <p>Need an account ? </p>
+                    <Link to="/register">Sign up</Link>
 
                 </div>
 
