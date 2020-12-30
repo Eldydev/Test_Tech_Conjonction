@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import '../App.css';
 
 class Home extends Component {
@@ -27,7 +28,7 @@ class Home extends Component {
                     <p>Password</p>
                     <input type="text" />
                     <p>keep me logged</p>
-                    <p>forgot your password</p>
+                    <p><Link to="/forgotpassword">Forgot your password ?</Link></p>
                     <button>SIGN IN</button>
                     <p>Need an account ? sign up</p>
 
