@@ -20,8 +20,8 @@ class Home extends Component {
         this.login = this.login.bind(this);
         this.componentDidMount = this.componentDidMount.bind(this);
     }
-    componentDidMount() {
-        fetch('https://reqres.in/api/users')
+    componentDidMount() { //focntion au chargement de la page
+        fetch('https://reqres.in/api/users') //recuperation des informations de tout les users
             .then(res => res.json())
 
             .catch(error => console.error('Error: ', error))
@@ -41,8 +41,8 @@ class Home extends Component {
 
     }
     Concatarray() {
-        this.setState({ UserArray: this.state.Array1.concat(this.state.Array2) })
-        console.log(this.state.UserArray);
+        this.setState({ UserArray: this.state.Array1.concat(this.state.Array2) }) //concatenation des Array users
+        console.log(this.state.UserArray); 
     }
     Email(event) {
         this.setState({ Email: event.target.value })
@@ -61,9 +61,9 @@ class Home extends Component {
         }
         if ((this.state.Email != '') && (this.state.Password != '')) {
             this.state.UserArray.forEach((user) => {
-                if (user.email === this.state.Email) {
+                if (user.email === this.state.Email) { //comparaison des users pour verifier que l'email corresponds aux infos du formulaires
                     console.log("match")
-                    localStorage.setItem('Name', JSON.stringify(user.first_name))
+                    localStorage.setItem('Name', JSON.stringify(user.first_name)) // stockage des infos en localstorage
                     localStorage.setItem('Avatar', JSON.stringify(user.avatar))
                     console.log('register');
                     fetch('https://reqres.in/api/login', { //creating dummy user
