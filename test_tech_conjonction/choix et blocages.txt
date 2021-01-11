@@ -1,0 +1,17 @@
+points de blocages:
+
+- Redux: Je ne l'avais jamais utilisé avant. J'ai passé une bonne partie du week-end a essayer de l'incoporer mais sans succes.
+  Il sagit simplement d'un manque de temps pour une bonne compréhension notement pour son utilisation avec des requetes
+  Je pense avoir bien compris le programme qui m'aurait servis a conserver mes States d'un components à l'autre.
+  Je m'en serai servis pour stocker les informations utilisateurs ( nom, mail etc ) et ainsi pouvoir les  reutiliser sans passer par du localstorage.
+  J'en ai parler avec mon formateur et on va voir pour ameliorer ça dans les semaines à venir.
+  
+ choix: 
+ 
+ requetes: j'ai fait au plus simple avec des fetch, permettant de dialoguer facilement avec l'api
+ 
+ dashboard: pas de dialogues avec une api externe, je comptait utiliser celle de https://www.betaseries.com/, que j'avais deja utiliser lors d'un exercice.
+  l'idée de base était qu'un login aurait utilisé mon compte et afficher un detail des série suivis et favorite avec le details de ces mêmes séries au click de miniature
+  
+  css : il n'est pas fini, je commence toujours avec une mise en place legere histoire d'avoir une idée de la disposition et le fait en dernier, d'ou l'aspect peu travaillé de l'exercice
+  
