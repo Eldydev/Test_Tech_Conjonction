@@ -13,11 +13,11 @@ class Dashboard extends Component {
 
     }
     componentDidMount() {
-        const Name = localStorage.getItem('Name')
+        const Name = localStorage.getItem('Name') //recuperation des infos depuis localstorage
         const pict = localStorage.getItem('Avatar')
         if (Name) {
             var name = Name.replace(/['"]+/g, '')
-            var picture = pict.replace(/['"]+/g, '')
+            var picture = pict.replace(/['"]+/g, '') //regex pour retirer les guillements
             this.setState({ Name: name });
             this.setState({ pic: picture });
 
