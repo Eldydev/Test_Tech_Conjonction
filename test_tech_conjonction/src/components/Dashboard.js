@@ -7,15 +7,20 @@ class Dashboard extends Component {
         super(props);
         this.state = {
             Name: '',
+            pic: 'https://upload.wikimedia.org/wikipedia/commons/f/fc/No_picture_available.png',
 
         }
 
     }
     componentDidMount() {
         const Name = localStorage.getItem('Name')
+        const pict = localStorage.getItem('Avatar')
         if (Name) {
             var name = Name.replace(/['"]+/g, '')
+            var picture = pict.replace(/['"]+/g, '')
             this.setState({ Name: name });
+            this.setState({ pic: picture });
+
         }
     }
     render() {
@@ -27,7 +32,9 @@ class Dashboard extends Component {
                 <div className="container">
                     <div className="picsandinfos">
                         <p>profile pic and infos</p>
-                        <p className='pic'>pic</p>
+                        <img className="pic"
+                            src={this.state.pic}
+                            alt="profile picture"></img>
                         <p className='infos'>info</p>
                     </div>
                     <div className="seriesdisplay">

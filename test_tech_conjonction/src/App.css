@@ -161,15 +161,6 @@ input:focus {
 }
 
 .pic {
-  border: solid 2px blue;
   height: 35%;
   width: 35%;
-}
-
-.infos {
-  border: solid 2px red;
-}
-
-.series {
-  border: solid 2px green;
 }
