@@ -57,7 +57,7 @@ class Register extends Component {
                 .then((result) => {
                     console.log(result);
                     if (!result.error) {
-                        localStorage.setItem('Name', JSON.stringify(this.state.Name))
+                        localStorage.setItem('Name', JSON.stringify(this.state.Name)) //stock name in localstorage 
                         setTimeout(() => this.props.history.push("/dashboard"), 500); //redirect to dashboard
                     }
 

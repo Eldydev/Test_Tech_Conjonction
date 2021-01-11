@@ -6,15 +6,23 @@ class Dashboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            Name: '',
 
         }
 
+    }
+    componentDidMount() {
+        const Name = localStorage.getItem('Name')
+        if (Name) {
+            var name = Name.replace(/['"]+/g, '')
+            this.setState({ Name: name });
+        }
     }
     render() {
         return (
             <div className="dashcontainer">
                 <div className="username">
-                    <h2>name</h2>
+                    <h2>Welcome {this.state.Name}</h2>
                 </div>
                 <div className="container">
                     <div className="picsandinfos">

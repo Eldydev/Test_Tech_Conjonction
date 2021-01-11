@@ -10,11 +10,39 @@ class Home extends Component {
             Password: '',
             EmailAlert: '',
             PasswordAlert: '',
+            Array1: [],
+            Array2: [],
+            UserArray: [],
         }
 
         this.Email = this.Email.bind(this);
         this.Password = this.Password.bind(this);
         this.login = this.login.bind(this);
+        this.componentDidMount = this.componentDidMount.bind(this);
+    }
+    componentDidMount() {
+        fetch('https://reqres.in/api/users')
+            .then(res => res.json())
+
+            .catch(error => console.error('Error: ', error))
+
+            .then(result => {
+                this.setState({ Array1: result.data })
+            });
+        fetch('https://reqres.in/api/users?page=2')
+            .then(res => res.json())
+
+            .catch(error => console.error('Error: ', error))
+
+            .then(result => {
+                this.setState({ Array2: result.data })
+                this.Concatarray();
+            })
+
+    }
+    Concatarray() {
+        this.setState({ UserArray: this.state.Array1.concat(this.state.Array2) })
+        console.log(this.state.UserArray);
     }
     Email(event) {
         this.setState({ Email: event.target.value })
@@ -24,6 +52,7 @@ class Home extends Component {
     }
     login(e) {
         e.preventDefault();
+
         if (this.state.Email == '') {
             this.setState({ EmailAlert: 'invalid E-mail' })//check email
         }
@@ -31,29 +60,36 @@ class Home extends Component {
             this.setState({ PasswordAlert: 'invalid Password' })//check password
         }
         if ((this.state.Email != '') && (this.state.Password != '')) {
-            console.log('register');
-            fetch('https://reqres.in/api/login', { //creating dummy user
-                method: 'post',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
+            this.state.UserArray.forEach((user) => {
+                if (user.email === this.state.Email) {
+                    console.log("match")
+                    localStorage.setItem('Name', JSON.stringify(user.first_name))
+                    localStorage.setItem('Avatar', JSON.stringify(user.avatar))
+                    console.log('register');
+                    fetch('https://reqres.in/api/login', { //creating dummy user
+                        method: 'post',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
 
-                body: JSON.stringify({
-                    email: this.state.Email,
-                    password: this.state.Password
-                })
+                        body: JSON.stringify({
+                            email: this.state.Email,
+                            password: this.state.Password
+                        })
 
-            }).then((Response) => Response.json())
-                .then((result) => {
-                    console.log(result);
-                    if (!result.error) {
-                        setTimeout(() => this.props.history.push("/dashboard"), 500); //redirect to dashboard
-                    }
-                    else
-                        this.setState({ EmailAlert: 'non registered user' });
+                    }).then((Response) => Response.json())
+                        .then((result) => {
+                            console.log(result);
+                            if (!result.error) {
+                                setTimeout(() => this.props.history.push("/dashboard"), 500); //redirect to dashboard
+                            }
+                            else
+                                this.setState({ EmailAlert: 'non registered user' });
 
-                })
+                        })
+                }
+            })
         }
 
     }
